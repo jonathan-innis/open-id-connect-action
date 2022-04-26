@@ -36,6 +36,6 @@ jobs:
       - name: 'Run az commands'
         run: |
           az account show
-          az extension add -n graph
+          az extension add -n resource-graph
           az graph query -q "kubernetesconfigurationresources | where type == "microsoft.kubernetesconfiguration/fluxconfigurations" | where properties.sourceKind =~ "GitRepository" | where properties.gitRepository.url == "https://gitops-bitbucket-test-server.eastus.cloudapp.azure.com/scm/git/flux2-kustomize-helm-example.git" | where properties.gitRepository.repositoryRef.branch == "multi-tenancy2" | summarize count() by tostring(properties.complianceState), tostring(properties.provisioningState)"
           pwd 
